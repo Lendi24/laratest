@@ -10,6 +10,7 @@ class Role
     use HasFactory ;
 
     protected $fillable = [
-
+        'name', 
+        'desc',
     ];
 }
