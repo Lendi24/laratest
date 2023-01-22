@@ -1,7 +1,6 @@
 @php
-    $role_id        = Auth::user()->role_id;
-    $role           = DB::table('roles')->where("id", $role_id )->first();
-    $role_colour    = $role->color;
+    $role  = DB::table('roles')->where("id", Auth::user()->role_id )->first();
+    $users = DB::table('users')->get(); 
 @endphp
 
 <x-app-layout>
@@ -18,14 +17,14 @@
                 'shadow-sm',
                 'sm:rounded-lg',
 
-                'bg-red-600'        => $role_colour == 'red',
-                'dark:bg-red-600'   => $role_colour == 'red',
+                'bg-red-600'        => $role->color == 'red',
+                'dark:bg-red-600'   => $role->color == 'red',
 
-                'bg-green-600'      => $role_colour == 'green',
-                'dark:bg-green-600' => $role_colour == 'green',
+                'bg-green-600'      => $role->color == 'green',
+                'dark:bg-green-600' => $role->color == 'green',
 
-                'bg-blue-600'      => $role_colour == 'blue',
-                'dark:bg-blue-600' => $role_colour == 'blue',
+                'bg-blue-600'       => $role->color == 'blue',
+                'dark:bg-blue-600'  => $role->color == 'blue',
             ])>            
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in as:") }}
@@ -33,16 +32,39 @@
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    also here
-                </div>
-            </div>
+
+            @if ($role->id >= 3)
             <div class="text-white">
                 <b class="bg-red-600">red</b>
                 <b class="bg-green-600">green</b>
                 <b class="bg-blue-600">blue</b>
             </div>
+            @else
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                @for ($i = 1; $i < count($users); $i++)
+                    <div class="bg-gray-600 mb-1 rounded-lg flex justify-between p-5">
+                        <div>
+                            <b>ID: {{ $i }}</b><br>
+                            <b>User Name:  {{ $users[$i]->name }}</b><br>
+                            <b>First Name: {{ $users[$i]->first_name }}</b><br>
+                            <b>Last Name:  {{ $users[$i]->last_name }}</b><br>
+                        </div>
+                        <div class="flex justify-center p-5">
+                            <button class="bg-green-700 rounded-lg p-2 m-1">
+                                Promote
+                            </button>
+                            <button class="bg-red-700 rounded-lg p-2 m-1">
+                                Demote
+                            </button>
+                        </div>
+                    </div>
+                @endfor
+                </div>
+            </div>
+            @endif
+
+
 
 
 
