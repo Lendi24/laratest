@@ -22,6 +22,9 @@
 
                 'bg-green-600'      => $role_colour == 'green',
                 'dark:bg-green-600' => $role_colour == 'green',
+
+                'bg-blue-600'      => $role_colour == 'blue',
+                'dark:bg-blue-600' => $role_colour == 'blue',
             ])>            
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in as:") }}
@@ -34,9 +37,12 @@
                     also here
                 </div>
             </div>
-            <div class="bg-red-600">red</div>
-            <div class="bg-green-600">green</div>
-            <div class="bg-blue-600">blue</div>
+            <div class="text-white">
+                <b class="bg-red-600">red</b>
+                <b class="bg-green-600">green</b>
+                <b class="bg-blue-600">blue</b>
+            </div>
+
 
 
         </div>
