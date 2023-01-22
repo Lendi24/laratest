@@ -24,21 +24,19 @@ class RoleSeeder extends Seeder{
         DB::table('roles')->insert([ //1
             'name'          => "admin",
             'description'   => "",    
-            'color'         => "bg-red-600",    
+            'color'         => "red",    
         ]);
 
         DB::table('roles')->insert([ //2
             'name'          => "poweruser",
             'description'   => "",    
-            'color'         => "bg-blue-600",    
+            'color'         => "blue",    
         ]);
 
         DB::table('roles')->insert([ //3
             'name'          => "user",
             'description'   => "",    
-            'color'         => "'flex",    //testing html-class injection
-
-            //'color'         => "bg-green-400",    Auth::user();
+            'color'         => "green",  
         ]);
     }
 }

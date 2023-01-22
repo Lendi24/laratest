@@ -1,6 +1,7 @@
 @php
     $role_id        = Auth::user()->role_id;
-    $role_colour    = 'green';
+    $role           = DB::table('roles')->where("id", $role_id )->first();
+    $role_colour    = $role->color;
 @endphp
 
 <x-app-layout>
@@ -28,7 +29,7 @@
             ])>            
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in as:") }}
-                    {{ (DB::table('roles')->where("id", $role_id )->first('name')->name) }}
+                    {{ $role->name }}
                 </div>
             </div>
 
