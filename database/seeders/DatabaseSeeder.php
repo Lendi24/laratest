@@ -81,6 +81,48 @@ class UserSeeder extends Seeder{
 
             'role_id' => 3,    
         ]);
+
+        ////
+
+        DB::table('users')->insert([ //4
+            'name' => "admin",
+            'phone_number' => '1000000000',
+    
+            'first_name' => fake()->name(),
+            'last_name'  => fake()->name(),
+    
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => "",
+
+            'role_id' => 1,    
+        ]);
+
+        DB::table('users')->insert([ //5
+            'name' => "powerusr",
+            'phone_number' => '1000000001',
+    
+            'first_name' => fake()->name(),
+            'last_name'  => fake()->name(),
+    
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => "",
+
+            'role_id' => 2,    
+        ]);
+
+        DB::table('users')->insert([ //6
+            'name' => "user",
+            'phone_number' => '1000000002',
+    
+            'first_name' => fake()->name(),
+            'last_name'  => fake()->name(),
+    
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => "",
+
+            'role_id' => 3,    
+        ]);
+
     }
 }
 

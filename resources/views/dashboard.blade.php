@@ -42,21 +42,30 @@
             @else
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                @for ($i = 1; $i < count($users); $i++)
+                @for ($i = 0; $i < count($users); $i++)
                     <div class="bg-gray-600 mb-1 rounded-lg flex justify-between p-5">
                         <div>
                             <b>ID: {{ $i }}</b><br>
                             <b>User Name:  {{ $users[$i]->name }}</b><br>
                             <b>First Name: {{ $users[$i]->first_name }}</b><br>
                             <b>Last Name:  {{ $users[$i]->last_name }}</b><br>
+                            <b>Role:       {{ DB::table('roles')->where("id", $users[$i]->role_id )->first()->name }}</b><br>
                         </div>
-                        <div class="flex justify-center p-5">
+                        <div class="flex justify-center align-middle mt-auto mb-auto">
+                            @if     ($role->id > $users[$i]->role_id)
+                            <b>This user has higher privileges then you!</b>
+                            @elseif (Auth::user()->id == $i)
+                            <b>You cannot modify your own privileges</b>
+                            @else
+                            @if     ($role->id != $users[$i]->role_id)
                             <button class="bg-green-700 rounded-lg p-2 m-1">
                                 Promote
                             </button>
+                            @endif
                             <button class="bg-red-700 rounded-lg p-2 m-1">
                                 Demote
                             </button>
+                            @endif
                         </div>
                     </div>
                 @endfor
