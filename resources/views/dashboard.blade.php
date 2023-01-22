@@ -32,7 +32,6 @@
                 </div>
             </div>
 
-
             @if ($role->id >= 3)
             <div class="text-white">
                 <b class="bg-red-600">red</b>
@@ -71,12 +70,20 @@
                 @endfor
                 </div>
             </div>
+
+            <form method="post" action="{{ route('profile.promote') }}" class="p-6">
+                @csrf
+                @method('post')
+                <input type="submit" value="Promote">
+            </form>
+
+            <form method="post" action="{{ route('profile.demote') }}" class="p-6">
+                @csrf
+                @method('post')
+                <input type="submit" value="Demote">
+            </form>
+
             @endif
-
-
-
-
-
         </div>
     </div>
 </x-app-layout>
