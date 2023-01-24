@@ -54,7 +54,7 @@
                             @if     ($role->id > $users[$i]->role_id)
                             <b>This user has higher privileges then you!</b>
                             @elseif (Auth::user()->id == $i)
-                            <b>You cannot modify your own privileges</b>
+                            <b class="flex flex-col justify-center align-middle m-1">You cannot modify your own privileges</b>
                             @else
                             @if     ($role->id != $users[$i]->role_id)
                             <a class="bg-green-700 rounded-lg p-2 m-1"
@@ -66,11 +66,12 @@
                                 href ="/profile/e/{{$i+1}}/demote">
                                 Demote
                             </a>
+                            @endif
                             <a  class="bg-blue-700 rounded-lg p-2 m-1"
                                 href ="/profile/e/{{$i+1}}/promote">
                                 Edit
                             </a>
-                            @endif
+
                         </div>
                     </div>
                 @endfor
