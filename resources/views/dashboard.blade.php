@@ -73,10 +73,12 @@
                                 Demote
                             </a>
                             @endif
+                            @if(false)
                             <a  class="bg-blue-700 rounded-lg p-2 m-1"
-                                href ="/profile/e/{{$i+1}}/promote">
+                                href ="/profile/e/{{$i+1}}/">
                                 Edit
                             </a>
+                            @endif
 
                         </div>
                     </div>

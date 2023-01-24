@@ -15,9 +15,10 @@ class ProfileUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        return [//070, 072, 073, 076, 079 (mobiltelefoni) 
+            //starts_with:070,072,073,076,079  (not working..)
             'name' => ['string', 'max:255'],
-            'phone_number' =>  ['required', 'numeric', 'digits:10',],
+            'phone_number' =>  ['required', 'numeric', 'digits:10', 'unique:users'],
 
             //'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
         ];

@@ -19,7 +19,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return Redirect::route('register');
+    return Redirect::route('dashboard');
 });
 
 Route::get('/dashboard', function () {
