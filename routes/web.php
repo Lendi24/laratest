@@ -19,7 +19,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return Redirect::route('dashboard');
+    return Redirect::route('register');
 });
 
 Route::get('/dashboard', function () {
@@ -34,19 +34,6 @@ Route::middleware('auth')->group(function () {
     Route::get   ('/profile/e/{target}/promote/', [ProfileEditController::class, 'promote']   )->name('profile.promote');
     Route::get   ('/profile/e/{target}/demote/',  [ProfileEditController::class, 'demote' ]   )->name('profile.demote');
     Route::get   ('/profile/e/{target}/',         [ProfileEditController::class, 'edit'   ]   )->name('profile.modify');
-
-    /*
-    Route::post('/profile/promote', function (Request $request) {
-        //return ($request->user()->id);
-        return ($request->user()->id);
-        //return Redirect::route('dashboard');
-    }
-    /*[ProfileController::class, 'promote']*//*)->name('profile.promote');
-    Route::post('/profile/demote' , /*[ProfileController::class, 'demote']*/ /*function () {
-
-        return Redirect::route('dashboard');
-    }
-    )->name('profile.demote');*/
 });
 
 require __DIR__.'/auth.php';

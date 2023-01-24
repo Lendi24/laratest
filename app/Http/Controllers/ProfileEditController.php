@@ -23,8 +23,7 @@ class ProfileEditController extends Controller
         ->limit(1)  
         ->update(array('role_id' => $targetUser->role_id-1)); 
 
-
-        return("Done!");
+        return(Redirect::route('dashboard'));
     }
 
     public function demote(Request $request, $target)
@@ -38,7 +37,7 @@ class ProfileEditController extends Controller
         ->limit(1)  
         ->update(array('role_id' => $targetUser->role_id+1)); 
 
-        return("Done!");
+        return(Redirect::route('dashboard'));
     }
 
     public function modify(Request $request, $target)

@@ -10,36 +10,42 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-12 ">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div @class([
-                'overflow-hidden',
-                'shadow-sm',
-                'sm:rounded-lg',
+                    'overflow-hidden',
+                    'shadow-sm', 
+                    'sm:rounded-lg',
 
-                'bg-red-600'        => $role->color == 'red',
-                'dark:bg-red-600'   => $role->color == 'red',
+                    'bg-red-400'        => $role->color == 'red',
+                    'bg-green-400'      => $role->color == 'green',
+                    'bg-blue-400'       => $role->color == 'blue',
 
-                'bg-green-600'      => $role->color == 'green',
-                'dark:bg-green-600' => $role->color == 'green',
+                ])>
+                
+                <div @class([
+                    'overflow-hidden',
+                    'shadow-sm',
+                    'sm:rounded-lg',
 
-                'bg-blue-600'       => $role->color == 'blue',
-                'dark:bg-blue-600'  => $role->color == 'blue',
-            ])>            
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in as:") }}
-                    {{ $role->name }}
+                    'bg-red-600'        => $role->color == 'red',
+                    'bg-green-600'      => $role->color == 'green',
+                    'bg-blue-600'       => $role->color == 'blue',
+                ])>            
+                    <div class="p-6 text-gray-900 dark:text-gray-100">
+                        {{ __("You're logged in as:") }}
+                        {{ $role->name }}
+                    </div>
                 </div>
-            </div>
 
-            @if ($role->id >= 3)
-            <div class="text-white">
-                <b class="bg-red-600">red</b>
-                <b class="bg-green-600">green</b>
-                <b class="bg-blue-600">blue</b>
-            </div>
-            @else
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                @if ($role->id >= 3)
+                <div class="text-white">
+                    <b class="bg-red-600">red</b>
+                    <b class="bg-green-600">green</b>
+                    <b class="bg-blue-600">blue</b>
+                </div>
+                @else
+
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                 @for ($i = 0; $i < count($users); $i++)
                     <div class="bg-gray-600 mb-1 rounded-lg flex justify-between p-5">
